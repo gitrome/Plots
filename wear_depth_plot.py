@@ -34,16 +34,16 @@ fig, (ax1, ax2) = plt.subplots(2, 1)
 fig.subplots_adjust(hspace=0.5)
 
 ax1.set_ylim(1.2,0)
-ax1.plot(t1, s1, 'o')
-ax1.errorbar(t1, s1, yerr=e1,fmt='p')
+ax1.plot(t1, s1, 'ko')
+ax1.errorbar(t1, s1, yerr=e1,fmt='p', ecolor='blue')
 
 ax1.set(xlabel='Revolutions', ylabel="Wear depth ($\mu$m)",
        title='Undoped MoS$_2$ High Stress Wear Depth')
 ax1.grid()
 
 ax2.set_ylim(1.2,0)
-ax2.plot(t2, s2, 'o')
-ax2.errorbar(t2, s2, yerr=e2,fmt='p')
+ax2.plot(t2, s2, 'ro')
+ax2.errorbar(t2, s2, yerr=e2,fmt='p', ecolor='blue')
 
 ax2.set(xlabel='Revolutions', ylabel="Wear depth ($\mu$m)",
        title='Ni Doped MoS$_2$ High Stress Wear Depth')
