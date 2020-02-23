@@ -13,20 +13,41 @@ t2 = np.arange(50, 300, 50)
 s2 = np.array([0.4435, 0.707, 0.594, 0.5705, 0.5465])
 e2 = [0.1944, 0, 0.2758, 0.3118, 0.3189]
 
-fig, ax = plt.subplots()
+# Single plot
+#fig, ax = plt.subplots()
 
-ax.set_ylim(1.2,0)
-ax.plot(t1, s1, 'o')
-ax.errorbar(t1, s1, yerr=e1,fmt='-')
-# arr_img = mpimg.imread('UD_HS_AM_RT_17mm_50rev.png')
+#ax.set_ylim(1.2,0)
+#ax.plot(t1, s1, 'o')
+#ax.errorbar(t1, s1, yerr=e1,fmt='p')
+#ax.plot(t2, s2, 'o')
+#ax.errorbar(t2, s2, yerr=e2,fmt='p')
 
-ax.set(xlabel='Revolutions', ylabel="Wear depth ($\mu$m)",
+#ax.set(xlabel='Revolutions', ylabel="Wear depth ($\mu$m)",
+#       title='Undoped MoS$_2$ High Stress Wear Depth')
+
+
+#ax.grid()
+
+# 2 Subplots
+
+fig, (ax1, ax2) = plt.subplots(2, 1)
+fig.subplots_adjust(hspace=0.5)
+
+ax1.set_ylim(1.2,0)
+ax1.plot(t1, s1, 'o')
+ax1.errorbar(t1, s1, yerr=e1,fmt='p')
+
+ax1.set(xlabel='Revolutions', ylabel="Wear depth ($\mu$m)",
        title='Undoped MoS$_2$ High Stress Wear Depth')
-#ab = AnnotationBbox(imagebox, (0.4, 0.6))
+ax1.grid()
 
-#ax.add_artist(ab)
+ax2.set_ylim(1.2,0)
+ax2.plot(t2, s2, 'o')
+ax2.errorbar(t2, s2, yerr=e2,fmt='p')
 
-ax.grid()
+ax2.set(xlabel='Revolutions', ylabel="Wear depth ($\mu$m)",
+       title='Ni Doped MoS$_2$ High Stress Wear Depth')
+ax2.grid()
 
 plt.draw()
 fig.savefig("UD_HS_AM_RT.png")
