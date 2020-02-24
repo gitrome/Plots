@@ -3,6 +3,7 @@ import numpy.random as nr
 import matplotlib.pyplot as plt
 import pandas as pd
 
+# Reading Date from Tribometer CSV output
 data = pd.read_csv("ND_LS_AM_RT_30mm.csv", skiprows=2)
 raw_cof = data['DAQ.COF ()']
 #print(raw_cof.shape)
