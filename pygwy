@@ -1,0 +1,5 @@
+import gwy
+
+plugin_type = "PROCESS"
+plugin_menu= "/path/to/required/(sub)menu"
+
