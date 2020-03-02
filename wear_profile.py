@@ -29,10 +29,31 @@ plt.show()
 
 
 '''
+
 our_files = glob.glob('*.csv')
+headers = ('x.1','y.1')
+
 for filename in our_files:
     print(filename, 'number')
-    df = pd.read_csv(filename, sep = ";", skiprows=[0,2])
+    df = pd.read_csv(filename,
+                     sep = ";",
+                     names= headers,
+                     skiprows=[0,2])
+    x1,y1 = df['x.1'], df['y.1']
+    print(x1)
+
+
+'''
+fig, ax = plt.subplots()
+ax.plot(x,y,'k')
+
+plt.draw()
+fig.savefig("UD_HS_AM_RT.png")
+plt.show()    
+
+'''
+
+
 
 
 
