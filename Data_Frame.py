@@ -16,7 +16,7 @@ for i, fname in enumerate(glob.glob(path)):
 # Load several
 result = pd.DataFrame()
 
-path = os.path.expanduser("/C:/Users/romer/PycharmProjects/RT_plots/ND_HS_AM_RT_14mm_50.csv")
+path = os.path.expanduser("/C:/Users/romer/PycharmProjects/RT_plots/ND_HS_AM_RT_14mm_*.csv")
 
 for fname in glob.glob(path):
     head, tail = os.path.split(fname)

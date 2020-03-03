@@ -17,15 +17,14 @@ UD_std = np.std([UD_raw_s1_30mm,UD_raw_s2_30mm, UD_raw_s1_18mm, UD_raw_s2_18mm],
 print(UD_mean)
 print(UD_std)
 
-
 # Data Ni-doped for plotting
 ND_raw_s1_30mm = np.array([0, 0.426, 0.422, 0.641, 0.717, 1.3786, 1.4544, 1.481])
 ND_raw_s1_18mm = np.array([0, 0.333, 0.382, 1.222, 1.2445, 1.2346, 1.2624, 1.3315])
-ND_raw_s2_30mm = np.array([0, 0.061, 0.126, 0.200, 0.563, 0.741, 0.670])
+ND_raw_s2_30mm = np.array([0, 0.061, 0.126, 0.200, 0.563, 0.741, 0.593, 0.603])
 ND_raw_s2_18mm = np.array([0, ])
 
-ND_mean = np.mean([ND_raw_s1_30mm, ND_raw_s1_18mm], axis = 0)
-ND_std = np.std([ND_raw_s1_30mm,ND_raw_s1_18mm], axis = 0)
+ND_mean = np.mean([ND_raw_s1_30mm, ND_raw_s1_18mm, ND_raw_s2_30mm], axis = 0)
+ND_std = np.std([ND_raw_s1_30mm,ND_raw_s1_18mm, ND_raw_s2_30mm], axis = 0)
 print(ND_mean)
 print(ND_std)
 
