@@ -11,7 +11,7 @@
 			"file": "wear_depth_plot.py",
 			"settings":
 			{
-				"buffer_size": 1760,
+				"buffer_size": 3002,
 				"line_ending": "Windows"
 			}
 		},
@@ -19,7 +19,19 @@
 			"file": "wear_profile.py",
 			"settings":
 			{
-				"buffer_size": 734,
+				"buffer_size": 957,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "import gwy\n\nplugin_type = \"PROCESS\"\nplugin_menu= \"/Repeat (Fix Zero)\"\n\ndef run():\n\t\n\n\n\n\n",
+			"file": "pygwy.py",
+			"file_size": 93,
+			"file_write_time": 132274004338303609,
+			"settings":
+			{
+				"buffer_size": 88,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -73,6 +85,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/romer/PycharmProjects/RT_plots/pygwy",
 		"/C/Users/romer/OneDrive/Escritorio/ME 263/lorentz_attractor.py",
 		"/C/Users/romer/OneDrive/Escritorio/JPL_data_analysis/Data_analysis_code/jpl_data_analysis.py",
 		"/C/Users/romer/Box/Sergio/inline_test/UD_HS_AM_RT_17mm/UD_HS_AM_RT_17mm/images/50rev/UD_HS_AM_RT_17mm_50rev",
@@ -124,7 +137,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -133,7 +146,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1760,
+						"buffer_size": 3002,
 						"regions":
 						{
 						},
@@ -152,7 +165,7 @@
 						"translation.y": 18.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -161,15 +174,43 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 734,
+						"buffer_size": 957,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								734,
-								734
+								267,
+								267
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "pygwy.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 88,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								86,
+								86
 							]
 						],
 						"settings":

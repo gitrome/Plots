@@ -48,7 +48,7 @@ ax.plot(revolutions, ND_mean, 'yo',
 ax.errorbar(revolutions, ND_mean, yerr=ND_std, linestyle='None', capsize=5)
 
 ax.axhline(y=0.0, linestyle='--', color="green", label='Disk Surface')
-ax.axhline(y=0.8, linestyle='--', color="red", label='Coating Theoretical Thickness')
+#ax.axhline(y=0.8, linestyle='--', color="red", label='Coating Theoretical Thickness')
 
 
 ax.set(xlabel='Revolutions', ylabel="Wear depth ($\mu$m)",
