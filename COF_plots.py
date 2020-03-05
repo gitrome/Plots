@@ -2,13 +2,25 @@ import numpy as np
 import numpy.random as nr
 import matplotlib.pyplot as plt
 import pandas as pd
+import os, glob
 
-# Reading Date from Tribometer CSV output
-data = pd.read_csv("ND_LS_AM_RT_30mm.csv", skiprows=2)
-raw_cof = data['DAQ.COF ()']
-#print(raw_cof.shape)
-raw_rev = data['Rotary.Position (rev)']
-#print(raw_rev.shape)
+#x = np.arange(1000)
+#data = pd.Series(nr.randn(1000)+0.001*x+1)
+
+######### Reading Date from Tribometer CSV output #########
+
+os.chdir("F:/Short_Test/UD_HS_AM_RT/2/UD_HS_AM_RT_18mm/raw_data")
+extension = 'csv'
+filename = glob.glob('UD_HS_AM_RT_18mm_5'.format(extension))
+
+df = pd.read_csv(filename, skiprows=1)
+print(filename)
+#data = df['DAQ.COF ()']
+#print(data)
+#x = data['Rotary.Position (rev)']
+#print(x)
+
+###########################################################
 
 # found here
 # https://towardsdatascience.com/outlier-detection-with-hampel-filter-85ddf523c73d
@@ -40,4 +52,6 @@ ax.scatter(x[indices], hamplel_filtered[indices], label='set to mean', c='C5', m
 
 hamplel_filtered.rolling(21, center=True).median().plot(ax=ax)
 
-plt.legend()
+plt.draw()
+fig.savefig("COF.png")
+plt.show()

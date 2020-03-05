@@ -20,11 +20,10 @@ for filename in all_filenames:
     df = pd.read_csv(filename, index_col=None, header=2)
     li.append(df)
 
-print(li)
-df.to_csv('UD_HS_AM_RT_18mm.csv', index=False, encoding='utf-8-sig')
+#print(li)
 
 frame = pd.concat(li, axis=0, ignore_index=True)
-
+frame.to_csv('UD_HS_AM_RT_18mm.csv', index=False, encoding='utf-8-sig')
 '''
 # Combine all files in the list
 combined_csv = pd.concat([pd.read_csv(f) for f in all_filenames])
