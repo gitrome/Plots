@@ -3,36 +3,26 @@
 	{
 		"selected_items":
 		[
+			[
+				"gw",
+				"gwy_app_data_browser_set_current"
+			],
+			[
+				"g",
+				"gwy"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "wear_depth_plot.py",
-			"settings":
-			{
-				"buffer_size": 3002,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "wear_profile.py",
-			"settings":
-			{
-				"buffer_size": 957,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "import gwy\n\nplugin_type = \"PROCESS\"\nplugin_menu= \"/Repeat (Fix Zero)\"\n\ndef run():\n\t\n\n\n\n\n",
+			"contents": "# https://sourceforge.net/p/gwyddion/discussion/pygwy/thread/f634d66b/\n# https://sourceforge.net/p/gwyddion/discussion/pygwy/thread/a72be79a/\n# By David Necas  (Yeti)\n# By LABORDERIE Camille\n# Modified by Dominic\n\nimport sys\n\nsys.path.append(\"C:\\Program Files (x86)\\Gwyddion\\bin\")\n\nimport gwy\n\nsys.path.append(\"C:\\Program Files (x86)\\Gwyddion\\share\\gwyddion\\pygwy\")\n\nimport gwyutils\nimport glob, os\n\nos.system('cls')\n\nfolder = raw_input(\"Folder to correct : \")\n\npolynom = -1\nwhile polynom <= 0 or polynom > 12:\n    polynom = input(\"Polynomial order to remove : \")\n    polynom = int(polynom)\n\nsave = \"\"\nwhile save != \"y\" and save != \"n\":\n    save = raw_input(\"Save also as .asc? [y/n] :\")\n\n#func = \"\"    \n#while func == \"\":\n#    func = raw_input(\"Function to use: \")\n\nfor filename in glob.glob(folder + \"/*.asc\"):\n\n    ## Open the file\n    print \"Opening file : \" + filename + \"\\n\"\n\n    container = gwy.gwy_file_load(filename,gwy.RUN_NONINTERACTIVE)\n    gwy.gwy_app_data_browser_add(container)\n\n    dfields = gwyutils.get_data_fields_dir(container)\n    for key in dfields.keys():    # going through datafields, i.e. channels\n        datafield = dfields[key]\n        datafield_id = key.split('/')[1]\n\n        ## Remove polynomial background\n        coeffs = datafield.fit_polynom(polynom, polynom)\n        datafield.subtract_polynom(polynom, polynom, coeffs)\n        datafield.data_changed()\n\n        ## Linewise correction / Align rows\n\n#        gwy.layermask()\n#        gwy.gwy_process_func_run(\"line_correct_median\", container, gwy.RUN_IMMEDIATE)\n#        gwy.gwy_process_func_run(\"scars_remove\", container, gwy.RUN_IMMEDIATE)\n        gwy.gwy_process_func_run(\"fix_zero\", container, gwy.RUN_IMMEDIATE)\n        datafield.data_changed()\n        #gwy.gwy_process_func_run(func, container, gwy.RUN_IMMEDIATE)\n\n        ## Save the file as a .png\n        newname = os.path.splitext(filename)[0] + \"_c\"+ str(polynom) + \"_\" + \".png\"\n        gwy.gwy_app_data_browser_select_data_field(container, 0)\n        gwy.gwy_file_save(container, newname, gwy.RUN_NONINTERACTIVE)\n\n        ## Save the file as a .asc\n        if save == \"y\":\n            newname = os.path.splitext(filename)[0] + \"_c\"+ str(polynom) + \"_\" + \".asc\"\n            gwy.gwy_app_data_browser_select_data_field(container, 0)\n            gwy.gwy_file_save(container, newname, gwy.RUN_NONINTERACTIVE)\n\n        ## Get current datafield\n        data = gwy.gwy_app_data_browser_get_current(gwy.APP_DATA_FIELD)\n\n        ## Computes basic statistical quantities of a data field.\n        avg, ra, rms, skew, kurtosis = data.get_stats()\n\n        ## Save statistical quantities to file\n        file = open (os.path.splitext(filename)[0] + \"_c\"+ str(polynom) + \"_\" + \"stats\" + \".txt\", \"w\")\n        file.write(\"avg \"+str(avg) +\"\\nra \"+str(ra)+\"\\nrms \"+str(rms)+\"\\nskew \" +str(skew)+\"\\nkurtosis \"+ str(kurtosis))\n        file.close()\n\n    print \"File saved.\\n\"\t\n\n\n\n\n",
 			"file": "pygwy.py",
 			"file_size": 93,
 			"file_write_time": 132274004338303609,
 			"settings":
 			{
-				"buffer_size": 88,
-				"encoding": "UTF-8",
+				"buffer_size": 2906,
 				"line_ending": "Windows"
 			}
 		}
@@ -85,6 +75,8 @@
 	},
 	"file_history":
 	[
+		"/C/Users/romer/PycharmProjects/RT_plots/wear_profile.py",
+		"/C/Users/romer/PycharmProjects/RT_plots/wear_depth_plot.py",
 		"/C/Users/romer/PycharmProjects/RT_plots/pygwy",
 		"/C/Users/romer/OneDrive/Escritorio/ME 263/lorentz_attractor.py",
 		"/C/Users/romer/OneDrive/Escritorio/JPL_data_analysis/Data_analysis_code/jpl_data_analysis.py",
@@ -137,80 +129,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "wear_depth_plot.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3002,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								511,
-								511
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 18.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "wear_profile.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 957,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								267,
-								267
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "pygwy.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 88,
+						"buffer_size": 2906,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								86,
-								86
+								1840,
+								1840
 							]
 						],
 						"settings":
@@ -218,7 +154,7 @@
 							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 702.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
