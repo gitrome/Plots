@@ -1,35 +1,23 @@
-'''import pandas as pd
-import glob, os
-
-for filename in glob.glob('RT_plots/*.csv'):
-    data = pd.read_csv(filename, index_col='P')
-
-print(filename)
-'''
-
 import os, glob
 import pandas as pd
-os.chdir("F:/Short_Test/UD_HS_AM_RT/2/UD_HS_AM_RT_18mm/raw_data")
+import re
+os.chdir("D:/Short_Test/ND_HS_AM_RT/1/ND_HS_AM_RT_18mm/raw_data")
 
 extension = 'csv'
 all_filenames = [i for i in glob.glob('*{}'.format(extension))]
+all_filenames.sort(key=lambda f: int(re.sub('\D', '', f)))
+print(all_filenames)
 
 li = []
 
 for filename in all_filenames:
-    df = pd.read_csv(filename, index_col=None, header=2)
+    df = pd.read_csv(filename, index_col=None, header=2, skiprows=-2)
+    df = df[df['Rotary.Angle (deg)'] != 0]
     li.append(df)
 
-#print(li)
 
 frame = pd.concat(li, axis=0, ignore_index=True)
-frame.to_csv('UD_HS_AM_RT_18mm.csv', index=False, encoding='utf-8-sig')
-'''
-# Combine all files in the list
-combined_csv = pd.concat([pd.read_csv(f) for f in all_filenames])
+frame.to_csv('ND_HS_AM_RT_18mm.csv', index=False, encoding='utf-8-sig')
 
-# Export to csv
-combined_csv.to_csv('UD_HS_AM_RT_18mm.csv', index = False, encoding = 'utf-8-sig')
-'''
 
 

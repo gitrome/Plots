@@ -4,13 +4,13 @@ import matplotlib.transforms as transforms
 import numpy as np
 
 
-revolutions = np.array([0, 5, 10, 50, 100, 150, 200, 250, 500, 1000, 2000])
+revolutions = np.array([0, 5, 10, 50, 100, 150, 200, 250])
 
-# Data Undoped for plotting
-UD_HS_raw_s1_30mm = np.array([0, 0.555,0.816,0.738,1.614,1.607,1.654,1.675, 0, 0, 0])
-UD_HS_raw_s1_18mm = np.array([0, 0.418, 0.556, 1.356, 1.356, 1.425, 1.461, 1.506, 0, 0, 0])
-UD_HS_raw_s2_30mm = np.array([0, 0.67, 0.66, 1.16, 1.82, 1.85, 1.82, 1.93, 0, 0, 0])
-UD_HS_raw_s2_18mm = np.array([0, 0.489, 0.622, 0.798, 1.5432, 1.568, 1.6172, 1.6404, 0, 0, 0])
+# Data Undoped HS for plotting
+UD_HS_raw_s1_30mm = np.array([0, 0.555,0.816,0.738,1.614,1.607,1.654,1.675])
+UD_HS_raw_s1_18mm = np.array([0, 0.418, 0.556, 1.356, 1.356, 1.425, 1.461, 1.506])
+UD_HS_raw_s2_30mm = np.array([0, 0.67, 0.66, 1.16, 1.82, 1.85, 1.82, 1.93])
+UD_HS_raw_s2_18mm = np.array([0, 0.489, 0.622, 0.798, 1.5432, 1.568, 1.6172, 1.6404])
 UD_HS_array = np.array([UD_HS_raw_s1_30mm,UD_HS_raw_s2_30mm, UD_HS_raw_s1_18mm, UD_HS_raw_s2_18mm])
 
 UD_HS_mean = np.mean(UD_HS_array, axis = 0)
@@ -18,11 +18,11 @@ UD_HS_std = np.std(UD_HS_array, axis = 0)
 print(UD_HS_mean)
 #print(UD_HS_std)
 
-# Data Ni-doped for plotting
-ND_HS_raw_s1_30mm = np.array([0, 0.426, 0.422, 0.641, 0.717, 1.3786, 1.4544, 1.481, 0, 0, 0])
-ND_HS_raw_s1_18mm = np.array([0, 0.333, 0.382, 1.222, 1.2445, 1.2346, 1.2624, 1.3315, 0, 0, 0])
-ND_HS_raw_s2_30mm = np.array([0, 0.061, 0.126, 0.200, 0.563, 0.741, 0.593, 0.603, 0, 0, 0])
-ND_HS_raw_s2_18mm = np.array([0,0,0,0,0,0,0,0,0,0,0])
+# Data Ni-doped HS for plotting
+ND_HS_raw_s1_30mm = np.array([0, 0.426, 0.422, 0.641, 0.717, 1.3786, 1.4544, 1.481])
+ND_HS_raw_s1_18mm = np.array([0, 0.333, 0.382, 1.222, 1.2445, 1.2346, 1.2624, 1.3315])
+ND_HS_raw_s2_30mm = np.array([0, 0.061, 0.126, 0.200, 0.563, 0.741, 0.593, 0.603])
+ND_HS_raw_s2_18mm = np.array([0,0,0,0,0,0,0,0])
 ND_HS_array = np.array([ND_HS_raw_s1_30mm,ND_HS_raw_s2_30mm,ND_HS_raw_s1_18mm])
 
 ND_HS_mean = np.mean(ND_HS_array, axis = 0)
@@ -31,11 +31,11 @@ ND_HS_std = np.std(ND_HS_array, axis = 0)
 #print(ND_HS_std)
 
 
-# Data Undoped for plotting
-UD_LS_raw_s1_24mm = np.array([0, 0.319, 0.359, 0.417, 0.644, 0.700, 0.729, 0.883, 0.906, 0.956, 1.656])
-UD_LS_raw_s1_16_5mm = np.array([0, 0.302, 0.344, 0.457, 0.498, 0.622, 0.670, 0.744, 0.853, 0.926, 1.444])
-UD_LS_raw_s2_24mm = np.array([0, 0.546, 0.563, 0.681, 0.800, 0.817, 0.867, 0.922, 0.956, 1.852, 1.870])
-UD_LS_raw_s2_16_5mm = np.array([0, 0.341, 0.361, 0.461, 0.506, 0.681, 0.733, 0.815, 0.941, 0.989, 1.511])
+# Data Undoped LS for plotting
+UD_LS_raw_s1_24mm = np.array([0, 0.319, 0.359, 0.417, 0.644, 0.700, 0.729, 0.883])
+UD_LS_raw_s1_16_5mm = np.array([0, 0.302, 0.344, 0.457, 0.498, 0.622, 0.670, 0.744])
+UD_LS_raw_s2_24mm = np.array([0, 0.546, 0.563, 0.681, 0.800, 0.817, 0.867, 0.922])
+UD_LS_raw_s2_16_5mm = np.array([0, 0.341, 0.361, 0.461, 0.506, 0.681, 0.733, 0.815])
 UD_LS_array = np.array([UD_LS_raw_s1_24mm, UD_LS_raw_s2_24mm, UD_LS_raw_s1_16_5mm, UD_LS_raw_s2_16_5mm])
 
 UD_LS_mean = np.mean(UD_LS_array, axis=0)
@@ -43,8 +43,8 @@ UD_LS_std = np.std(UD_LS_array, axis=0)
 print(UD_LS_mean)
 print(UD_LS_std)
 
-# Data Ni-doped for plotting
-ND_LS_raw_s1_24mm = np.array([0, 0.178, 0.189, 0.233, 0.326, 0.344, 0.439, 0.456, 1.389, 1.356, 1.356])
+# Data Ni-doped LS for plotting
+ND_LS_raw_s1_24mm = np.array([0, 0.178, 0.189, 0.233, 0.326, 0.344, 0.439, 0.456])
 '''
 ND_LS_raw_s1_16_5mm = np.array([0, 0.333, 0.382, 1.222, 1.2445, 1.2346, 1.2624, 1.3315])
 ND_LS_raw_s2_24mm = np.array([0, 0.061, 0.126, 0.200, 0.563, 0.741, 0.593, 0.603])
@@ -61,34 +61,50 @@ print(ND_LS_std)
 fig, ax = plt.subplots()
 
 ax.set_ylim(2,-.5)
-ax.set_xlim(-5,1000)
+ax.set_xlim(-5,255)
 
 ax.plot(revolutions, UD_HS_mean, 'b^',
         linestyle='--',
-        label='Undoped-High Stress MoS$_2$')
-ax.errorbar(revolutions, UD_HS_mean, yerr=UD_HS_std, linestyle='None', capsize=5)
+        label='UD-HS MoS$_2$')
+ax.errorbar(revolutions, UD_HS_mean,
+            yerr=UD_HS_std,
+            ecolor='b',
+            linestyle='None',
+            capsize=5)
 
 ax.plot(revolutions, UD_LS_mean, 'g^',
         linestyle='--',
-        label='Undoped-Low Stress- MoS$_2$')
-ax.errorbar(revolutions, UD_LS_mean, yerr=UD_LS_std, linestyle='None', capsize=5)
+        label='UD-LS- MoS$_2$')
+ax.errorbar(revolutions, UD_LS_mean,
+            yerr=UD_LS_std,
+            linestyle='None',
+            ecolor='g',
+            capsize=5)
 
 ax.plot(revolutions, ND_HS_mean, 'yo',
         linestyle='--',
-        label='Ni-doped-High Stress MoS$_2$')
-ax.errorbar(revolutions, ND_HS_mean, yerr=ND_HS_std, linestyle='None', capsize=5)
+        label='Ni-HS MoS$_2$')
+ax.errorbar(revolutions, ND_HS_mean,
+            yerr=ND_HS_std,
+            linestyle='None',
+            ecolor='y',
+            capsize=5)
 
 ax.plot(revolutions, ND_LS_mean, 'ko',
         linestyle='--',
-        label='Ni-doped-Low Stress- MoS$_2$')
-ax.errorbar(revolutions, ND_LS_mean, yerr=ND_LS_std, linestyle='None', capsize=5)
+        label='Ni-LS- MoS$_2$')
+ax.errorbar(revolutions, ND_LS_mean,
+            yerr=ND_LS_std,
+            linestyle='None',
+            ecolor='k',
+            capsize=5)
 
 ax.axhline(y=0.0, linestyle='--', color="green", label='Disk Surface')
 #ax.axhline(y=0.8, linestyle='--', color="red", label='Coating Theoretical Thickness')
 
 
 ax.set(xlabel='Revolutions', ylabel="Wear depth ($\mu$m)",
-       title='High Stress Wear Depth')
+       title='Wear Depth')
 ax.grid()
 ax.legend()
 
