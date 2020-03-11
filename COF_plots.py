@@ -2,19 +2,30 @@ import numpy as np
 import numpy.random as nr
 import matplotlib.pyplot as plt
 import pandas as pd
-import os, glob
+import os, glob, re
 
 #x = np.arange(1000)
 #data = pd.Series(nr.randn(1000)+0.001*x+1)
 
 ######### Reading Date from Tribometer CSV output #########
 
-os.chdir("F:/Short_Test/UD_HS_AM_RT/2/UD_HS_AM_RT_18mm/raw_data")
+os.chdir("C:/Users/Sergio/Desktop/Short_Test/COF")
 extension = 'csv'
-filename = glob.glob('UD_HS_AM_RT_18mm_5'.format(extension))
+all_filenames = [i for i in glob.glob('*{}'.format(extension))]
+all_filenames.sort(key=lambda f: int(re.sub('\D', '', f)))
 
-df = pd.read_csv(filename, skiprows=1)
-print(filename)
+data = []
+
+for filename in all_filenames:
+    df = pd.read_csv(filename, index_col=None, header=2)
+    df1 = df.transpose()
+    data.append(df1)
+
+CoF_raw_0 = data[0].loc['DAQ.COF ()']
+Raw_Rev_0 = data[0].loc['Rotary.Position (rev)']
+
+
+
 #data = df['DAQ.COF ()']
 #print(data)
 #x = data['Rotary.Position (rev)']
@@ -41,14 +52,14 @@ def hampel_filter_pandas(input_series, window_size, n_sigmas=3):
     return new_series, indices
 
 fig, ax = plt.subplots()
-pd.Series(data).plot(ax=ax, label='original', alpha=0.6)
+pd.Series(CoF_raw_0).plot(ax=ax, label='original', alpha=0.6)
 # 3 sample for hampel on each side
-hamplel_filtered, indices = hampel_filter_pandas(data, 3)
+hamplel_filtered, indices = hampel_filter_pandas(CoF_raw_0, 3)
 
 # pd.Series(hamplel_filtered).plot(ax=ax, label='hampel')
 
-ax.scatter(x[indices], data[indices], label='outliers')
-ax.scatter(x[indices], hamplel_filtered[indices], label='set to mean', c='C5', marker='^')
+ax.scatter(Raw_Rev_0[indices], CoF_raw_0[indices], label='outliers')
+ax.scatter(Raw_Rev_0[indices], hamplel_filtered[indices], label='set to mean', c='C5', marker='^')
 
 hamplel_filtered.rolling(21, center=True).median().plot(ax=ax)
 
