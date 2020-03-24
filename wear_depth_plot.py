@@ -21,12 +21,12 @@ UD_HS_mean = np.mean(UD_HS_array, axis = 0)
 UD_HS_std = np.std(UD_HS_array, axis = 0)
 print(UD_HS_mean)
 print(UD_HS_std)
-
+0
 # Data Ni-doped HS for plotting
-ND_HS_raw_s1_30mm = np.array([0, 0.426, 0.422, 0.641, 0.717, 1.3786, 1.4544, 1.481, np.NA, 1.667, np.NA])
-ND_HS_raw_s1_18mm = np.array([0, 0.333, 0.382, 1.222, 1.2445, 1.2346, 1.2624, 1.3315, np.NA, 1.656, np.NA])
-ND_HS_raw_s2_30mm = np.array([0, 0.061, 0.126, 0.200, 0.563, 0.741, 0.593, 0.603, np.NA, 0.844, np.NA])
-ND_HS_raw_s2_18mm = np.array([0, 0.068, 0.0704, 0.037, 0.326, 0.548, 0.681, 0.852, np.NA, 0.833, np.NA])
+ND_HS_raw_s1_30mm = np.array([0, 0.426, 0.422, 0.641, 0.717, 1.3786, 1.4544, 1.481, np.nan, 1.667, np.nan])
+ND_HS_raw_s1_18mm = np.array([0, 0.333, 0.382, 1.222, 1.2445, 1.2346, 1.2624, 1.3315, np.nan, 1.656, np.nan])
+ND_HS_raw_s2_30mm = np.array([0, 0.061, 0.126, 0.200, 0.563, 0.741, 0.593, 0.603, np.nan, 0.844, np.nan])
+ND_HS_raw_s2_18mm = np.array([0, 0.068, 0.0704, 0.037, 0.326, 0.548, 0.681, 0.852, np.nan, 0.833, np.nan])
 #ND_HS_raw_s1_15mm = np.array([0, np.nan, np.nan, np.nan,np.nan, np.nan, np.nan,np.nan, np.nan, 1.667, np.nan])
 #ND_HS_raw_s1_28_5mm = np.array([0, np.nan, np.nan, np.nan,np.nan, np.nan, np.nan,np.nan, np.nan, 1.656, np.nan])
 #ND_HS_raw_s2_15mm = np.array([0, np.nan, np.nan, np.nan,np.nan, np.nan, np.nan,np.nan, np.nan, 0.844, np.nan])
