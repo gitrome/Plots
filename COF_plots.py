@@ -58,7 +58,7 @@ hamplel_filtered, indices = hampel_filter_pandas(CoF_raw_0, 3)
 
 # pd.Series(hamplel_filtered).plot(ax=ax, label='hampel')
 
-ax.scatter(Raw_Rev_0[indices], CoF_raw_0[indices], label='outliers')
+#ax.scatter(Raw_Rev_0[indices], CoF_raw_0[indices], label='outliers')
 ax.scatter(Raw_Rev_0[indices], hamplel_filtered[indices], label='set to mean', c='C5', marker='^')
 
 hamplel_filtered.rolling(21, center=True).median().plot(ax=ax)
