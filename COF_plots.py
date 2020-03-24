@@ -9,7 +9,7 @@ import os, glob, re
 
 ######### Reading Date from Tribometer CSV output #########
 
-os.chdir("C:/Users/Sergio/Desktop/Short_Test/COF")
+os.chdir("")
 extension = 'csv'
 all_filenames = [i for i in glob.glob('*{}'.format(extension))]
 all_filenames.sort(key=lambda f: int(re.sub('\D', '', f)))
