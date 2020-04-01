@@ -24,7 +24,7 @@ for filename in all_filenames:
 CoF_raw_0 = data[0].loc['DAQ.COF ()']
 Raw_Rev_0 = data[0].loc['Rotary.Position (rev)']
 
-
+pd.D
 
 #data = df['DAQ.COF ()']
 #print(data)
