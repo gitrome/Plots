@@ -53,7 +53,7 @@ ax.set_xlim(200,1200)
 ax.plot(Contact_pressure, UD_Array, 'ko',
         linestyle='--',
         markersize=12,
-        label='Undoped MoS$_2$')
+        label='Undoped')
 ax.errorbar(Contact_pressure, UD_Array,
             yerr=UD_error,
             ecolor='k',
@@ -64,7 +64,7 @@ ax.plot(Contact_pressure, ND_Array, 'o',
         color= '#4dbeee',
         linestyle='--',
         markersize=12,
-        label='Ni Doped MoS$_2$')
+        label='Ni Doped')
 ax.errorbar(Contact_pressure, ND_Array,
             yerr=ND_error,
             ecolor= '#4dbeee',
@@ -72,16 +72,15 @@ ax.errorbar(Contact_pressure, ND_Array,
             capsize=5)
 
 for i,j in zip(Contact_pressure, ND_Array):
-    ax.annotate(str(round(j,1)),xy=(i+5,j+2),fontsize=18)
+    ax.annotate(str(round(j,1)),xy=(i+5,j+2),fontsize=22)
     
 for i,j in zip(Contact_pressure, UD_Array):
-    ax.annotate(str(round(j,1)),xy=(i-30,j-10),fontsize=18)
+    ax.annotate(str(round(j,1)),xy=(i-30,j-10),fontsize=22)
 
-ax.set_xlabel('Contact Pressure ($MPa$)',fontsize=18)
-ax.set_ylabel('Coating Life ($x 10^3 Cycles$)',fontsize=18)
-ax.tick_params(axis='both', which='major', labelsize=18)
-ax.grid()
-ax.legend(fontsize=18)
+ax.set_xlabel('Contact Pressure (MPa)',fontsize=22)
+ax.set_ylabel('Coating Life (x10$^3$ Cycles)',fontsize=22)
+ax.tick_params(axis='both', which='major', labelsize=22)
+ax.legend(fontsize=22)
 
 plt.draw()
 fig.savefig("wear_life.png",bbox_inch='tight')

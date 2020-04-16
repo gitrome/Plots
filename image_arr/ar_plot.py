@@ -56,3 +56,5 @@ def plot_images_SEM():
     plt.show()
     return
 #%%
+plot_images_SEM()
+plot_images_SEM_short()

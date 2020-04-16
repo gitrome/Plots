@@ -75,15 +75,15 @@ fig, ax = plt.subplots(figsize=[14,10])
 
 plt.rcParams["font.family"] = "Times New Roman"
 
-ax.set_ylim(2,-0.5)
-ax.set_xlim(-5,1050)
+ax.set_ylim(0,2)
+ax.set_xlim(-50,1050)
 
 
 
 ax.plot(revolutions[mask_UD_HS], UD_HS_mean[mask_UD_HS], 'ko',
         linestyle='--',
         markersize=12,
-        label='UD-HS MoS$_2$')
+        label='Undoped 1100 $MPa$')
 ax.errorbar(revolutions, UD_HS_mean,
             yerr=UD_HS_std,
             ecolor='k',
@@ -94,7 +94,7 @@ ax.plot(revolutions[mask_ND_HS], ND_HS_mean[mask_ND_HS], 'co',
         linestyle='--',
         color= '#4dbeee',
         markersize=12,
-        label='Ni-HS MoS$_2$')
+        label='Ni Doped 1100 $MPa$')
 ax.errorbar(revolutions, ND_HS_mean,
             yerr=ND_HS_std,
             linestyle='None',
@@ -104,7 +104,7 @@ ax.errorbar(revolutions, ND_HS_mean,
 ax.plot(revolutions[mask_UD_LS], UD_LS_mean[mask_UD_LS], 'k^',
         linestyle='--',
         markersize=12,
-        label='UD-LS- MoS$_2$')
+        label='Undoped 300 $MPa$')
 ax.errorbar(revolutions, UD_LS_mean,
             yerr=UD_LS_std,
             linestyle='None',
@@ -115,7 +115,7 @@ ax.plot(revolutions[mask_ND_LS], ND_LS_mean[mask_ND_LS], 'c^',
         linestyle='--',
         color= '#4dbeee',
         markersize=12,
-        label='Ni-LS- MoS$_2$')
+        label='Ni Doped 300 $MPa$')
 ax.errorbar(revolutions, ND_LS_mean,
             yerr=ND_LS_std,
             linestyle='None',
@@ -123,15 +123,12 @@ ax.errorbar(revolutions, ND_LS_mean,
             capsize=5)
 
 
-ax.axhline(y=0.0, linestyle='--', color="green", label='Disk Surface')
-#ax.axhline(y=0.8, linestyle='--', color="red", label='Coating Theoretical Thickness')
+#ax.axhline(y=0.0, linestyle='--', color="green", label='Coating Surface')
 
-
-ax.set_xlabel('Cycles', fontsize=18) 
-ax.set_ylabel('Wear Depth ($\mu$m)', fontsize=18)
-ax.tick_params(axis='both', which='major', labelsize=18)
-ax.grid()
-ax.legend(fontsize=18)
+ax.set_xlabel('Cycles', fontsize=22)
+ax.set_ylabel('Wear Depth ($\mu$m)', fontsize=22)
+ax.tick_params(axis='both', which='major', labelsize=22)
+ax.legend(fontsize=22)
 
 plt.draw()
 fig.savefig("wear_depth.png",bbox_inches='tight')
