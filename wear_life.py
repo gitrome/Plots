@@ -43,13 +43,16 @@ UD_Array =  [UD_LS_mean, UD_ILS_mean, UD_IHS_mean, UD_HS_mean] #array with ND me
 UD_error = [UD_LS_std, UD_ILS_std, UD_IHS_std, UD_HS_std] #array with ND error (std)
 
 ################################# Plot #################################
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=[14,10])
 
-ax.set_ylim(-20,100)
+plt.rcParams["font.family"] = "Times New Roman"
+
+ax.set_ylim(-10,100)
 ax.set_xlim(200,1200)
 
 ax.plot(Contact_pressure, UD_Array, 'ko',
         linestyle='--',
+        markersize=12,
         label='Undoped MoS$_2$')
 ax.errorbar(Contact_pressure, UD_Array,
             yerr=UD_error,
@@ -57,25 +60,29 @@ ax.errorbar(Contact_pressure, UD_Array,
             linestyle='None',
             capsize=5)
 
-ax.plot(Contact_pressure, ND_Array, 'co',
+ax.plot(Contact_pressure, ND_Array, 'o',
+        color= '#4dbeee',
         linestyle='--',
+        markersize=12,
         label='Ni Doped MoS$_2$')
 ax.errorbar(Contact_pressure, ND_Array,
             yerr=ND_error,
-            ecolor='c',
+            ecolor= '#4dbeee',
             linestyle='None',
             capsize=5)
 
 for i,j in zip(Contact_pressure, ND_Array):
-    ax.annotate(str(round(j,1)),xy=(i+5,j+2))
+    ax.annotate(str(round(j,1)),xy=(i+5,j+2),fontsize=18)
     
 for i,j in zip(Contact_pressure, UD_Array):
-    ax.annotate(str(round(j,1)),xy=(i-30,j-10))
+    ax.annotate(str(round(j,1)),xy=(i-30,j-10),fontsize=18)
 
-ax.set(xlabel='Contact Pressure ($MPa$)', ylabel="Coating Life ($x 10^3 Cycles$)")
+ax.set_xlabel('Contact Pressure ($MPa$)',fontsize=18)
+ax.set_ylabel('Coating Life ($x 10^3 Cycles$)',fontsize=18)
+ax.tick_params(axis='both', which='major', labelsize=18)
 ax.grid()
-ax.legend()
+ax.legend(fontsize=18)
 
 plt.draw()
-fig.savefig("wear_life.png")
+fig.savefig("wear_life.png",bbox_inch='tight')
 plt.show()

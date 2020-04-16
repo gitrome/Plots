@@ -46,36 +46,43 @@ ND_HS_std = np.nanstd(ND_HS_array, axis = 0)
 
 
 # Data Undoped LS for plotting
-UD_LS_raw_s1_24mm = np.array([0, 0.319, 0.359, 0.417, 0.644, 0.700, 0.729, 0.883, 0.906, 0.956])
-UD_LS_raw_s1_16_5mm = np.array([0, 0.302, 0.344, 0.457, 0.498, 0.622, 0.670, 0.744, 0.853, 0.926])
-UD_LS_raw_s2_24mm = np.array([0, 0.546, 0.563, 0.681, 0.800, 0.817, 0.867, 0.922, 0.956, 1.852])
-UD_LS_raw_s2_16_5mm = np.array([0, 0.341, 0.361, 0.461, 0.506, 0.681, 0.733, 0.815, 0.941, 0.989])
+UD_LS_raw_s1_24mm = np.array([0, 0.319, 0.359, 0.417, 0.644, 0.700, 0.729, 0.883, np.nan, 0.956])
+UD_LS_raw_s1_16_5mm = np.array([0, 0.302, 0.344, 0.457, 0.498, 0.622, 0.670, 0.744, np.nan, 0.926])
+UD_LS_raw_s2_24mm = np.array([0, 0.546, 0.563, 0.681, 0.800, 0.817, 0.867, 0.922, np.nan, 1.852])
+UD_LS_raw_s2_16_5mm = np.array([0, 0.341, 0.361, 0.461, 0.506, 0.681, 0.733, 0.815, np.nan, 0.989])
 
 UD_LS_array = np.array([UD_LS_raw_s1_24mm, UD_LS_raw_s2_24mm, UD_LS_raw_s1_16_5mm, UD_LS_raw_s2_16_5mm])
 
 UD_LS_mean = np.mean(UD_LS_array, axis=0)
+mask_UD_LS = np.isfinite(UD_LS_mean)
 UD_LS_std = np.std(UD_LS_array, axis=0)
 
 # Data Ni-doped LS for plotting
-ND_LS_raw_s1_24mm = np.array([0, 0.178, 0.189, 0.233, 0.326, 0.344, 0.439, 0.456, 1.389, 1.356])
-ND_LS_raw_s1_16_5mm = np.array([0, 0.222, 0.302, 0.368, 0.46, 0.526, 0.521, 0.578, 0.63, 0.844])
-ND_LS_raw_s2_24mm = np.array([0, 0.037, 0.067, 0.178, 0.25, 0.293, 0.396, 0.5, 0.524, 0.563])
-ND_LS_raw_s2_16_5mm = np.array([0, 0.67, 0.057, 0.141, 0.124, 0.159, 0.181, 0.328, 0.367, 0.422])
+ND_LS_raw_s1_24mm = np.array([0, 0.178, 0.189, 0.233, 0.326, 0.344, 0.439, 0.456, np.nan, 1.356])
+ND_LS_raw_s1_16_5mm = np.array([0, 0.222, 0.302, 0.368, 0.46, 0.526, 0.521, 0.578, np.nan, 0.844])
+ND_LS_raw_s2_24mm = np.array([0, 0.037, 0.067, 0.178, 0.25, 0.293, 0.396, 0.5,np.nan, 0.563])
+ND_LS_raw_s2_16_5mm = np.array([0, 0.67, 0.057, 0.141, 0.124, 0.159, 0.181, 0.328, np.nan, 0.422])
 
 #ND_LS_array = np.array([ND_LS_raw_s1_24mm, ND_LS_raw_s2_24mm, ND_LS_raw_s1_16_5mm, ND_LS_raw_s2_16_5mm])
 ND_LS_array = np.array([ND_LS_raw_s1_24mm, ND_LS_raw_s1_16_5mm])
 
 ND_LS_mean = np.mean(ND_LS_array, axis = 0)
+mask_ND_LS = np.isfinite(ND_LS_mean)
 ND_LS_std = np.std(ND_LS_array, axis = 0)
 
 # Single plot
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=[14,10])
+
+plt.rcParams["font.family"] = "Times New Roman"
 
 ax.set_ylim(2,-0.5)
 ax.set_xlim(-5,1050)
 
+
+
 ax.plot(revolutions[mask_UD_HS], UD_HS_mean[mask_UD_HS], 'ko',
         linestyle='--',
+        markersize=12,
         label='UD-HS MoS$_2$')
 ax.errorbar(revolutions, UD_HS_mean,
             yerr=UD_HS_std,
@@ -85,15 +92,18 @@ ax.errorbar(revolutions, UD_HS_mean,
 
 ax.plot(revolutions[mask_ND_HS], ND_HS_mean[mask_ND_HS], 'co',
         linestyle='--',
+        color= '#4dbeee',
+        markersize=12,
         label='Ni-HS MoS$_2$')
 ax.errorbar(revolutions, ND_HS_mean,
             yerr=ND_HS_std,
             linestyle='None',
-            ecolor='c',
+            ecolor='#4dbeee',
             capsize=5)
 
-ax.plot(revolutions, UD_LS_mean, 'k^',
+ax.plot(revolutions[mask_UD_LS], UD_LS_mean[mask_UD_LS], 'k^',
         linestyle='--',
+        markersize=12,
         label='UD-LS- MoS$_2$')
 ax.errorbar(revolutions, UD_LS_mean,
             yerr=UD_LS_std,
@@ -101,13 +111,15 @@ ax.errorbar(revolutions, UD_LS_mean,
             ecolor='k',
             capsize=5)
 
-ax.plot(revolutions, ND_LS_mean, 'c^',
+ax.plot(revolutions[mask_ND_LS], ND_LS_mean[mask_ND_LS], 'c^',
         linestyle='--',
+        color= '#4dbeee',
+        markersize=12,
         label='Ni-LS- MoS$_2$')
 ax.errorbar(revolutions, ND_LS_mean,
             yerr=ND_LS_std,
             linestyle='None',
-            ecolor='c',
+            ecolor='#4dbeee',
             capsize=5)
 
 
@@ -115,12 +127,14 @@ ax.axhline(y=0.0, linestyle='--', color="green", label='Disk Surface')
 #ax.axhline(y=0.8, linestyle='--', color="red", label='Coating Theoretical Thickness')
 
 
-ax.set(xlabel='Cycles', ylabel="Wear Depth ($\mu$m)")
+ax.set_xlabel('Cycles', fontsize=18) 
+ax.set_ylabel('Wear Depth ($\mu$m)', fontsize=18)
+ax.tick_params(axis='both', which='major', labelsize=18)
 ax.grid()
-ax.legend()
+ax.legend(fontsize=18)
 
 plt.draw()
-fig.savefig("wear_depth.png")
+fig.savefig("wear_depth.png",bbox_inches='tight')
 plt.show()
 
 '''
