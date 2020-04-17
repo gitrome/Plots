@@ -46,14 +46,14 @@ fig.text(0.5, 0.0, 'x ( $\mu$m )', fontsize=22, ha='center', va='center')
 fig.text(0, 0.5, 'y ( $\mu$m )',fontsize=22, ha='center', va='center',
          rotation='vertical')
 
-lineObjects = [axs[0].plot(x1, y1,'--'),
-               axs[1].plot(x2, y2,'--'),
-               axs[2].plot(x3, y3,'--'),
-               axs[3].plot(x4,y4,'--')]
+lineObjects = [axs[2].plot(x1, y1,'--'),
+               axs[3].plot(x2, y2,'--'),
+               axs[0].plot(x3, y3,'--'),
+               axs[1].plot(x4,y4,'--')]
 
 for i, label in enumerate(('a', 'b', 'c', 'd')):
     axs[i].text(0.1, 0.95, label, transform=axs[i].transAxes,
-      fontsize=25, fontweight='bold', va='top', ha='right')
+      fontsize=30, fontweight='bold', va='top', ha='right')
     axs[i].set_ylim(-1.5, 1.5)
     axs[i].set_xlim(0, 800)
     axs[i].tick_params(axis='both', which='major', labelsize=22)
@@ -62,23 +62,33 @@ for i, label in enumerate(('a', 'b', 'c', 'd')):
                                "150 Cycles","200 Cycles ",
                                "250 Cycles"))'''
 
-axs[0].legend(iter(lineObjects[0]),("5 Cycles ", "10 Cycles",
+axs[2].legend(iter(lineObjects[0]),("5 Cycles ", "10 Cycles",
                                "50 Cycles","100 Cycles ",
                                "150 Cycles","200 Cycles ",
                                "250 Cycles"), loc='lower right',fontsize=12)
-axs[1].legend(iter(lineObjects[1]),("5 Cycles ", "10 Cycles",
+axs[2].text(500, 1, 'Ni Doped 1100 MPa', fontsize =15,
+        bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 10}) 
+
+axs[3].legend(iter(lineObjects[1]),("5 Cycles ", "10 Cycles",
                                "50 Cycles","100 Cycles ",
                                "150 Cycles","200 Cycles ",
                                "250 Cycles"), loc='lower right',fontsize=12)
-axs[2].legend(iter(lineObjects[2]),("5 Cycles ", "10 Cycles",
+axs[3].text(500, 1, 'Ni Doped 1100 MPa', fontsize =15,
+        bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 10})
+
+axs[0].legend(iter(lineObjects[2]),("5 Cycles ", "10 Cycles",
                                "50 Cycles","100 Cycles ",
                                "150 Cycles","200 Cycles ",
                                "250 Cycles"), loc='lower right',fontsize=12)
-axs[3].legend(iter(lineObjects[3]),("5 Cycles ", "10 Cycles",
+axs[0].text(500, 1, 'Undoped 1100 MPa', fontsize =15,
+        bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 10})
+
+axs[1].legend(iter(lineObjects[3]),("5 Cycles ", "10 Cycles",
                                "50 Cycles","100 Cycles ",
                                "150 Cycles","200 Cycles ",
                                "250 Cycles"), loc='lower right',fontsize=12)
-    
+axs[1].text(500, 1, 'Undoped 300 MPa', fontsize =15,
+        bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 10})  
 
 fig.tight_layout(pad=5, w_pad=0.5, h_pad=2.0)
 plt.draw()
